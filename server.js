@@ -10,9 +10,10 @@ const { getStorage, ref, uploadBytesResumable } = require("firebase/storage")
 const { signInWithEmailAndPassword } = require("firebase/auth")
 const { auth } = require("./config/firebase.config")
 
-// Set up CORS to allow requests from the specific origin
 const corsOptions = {
   origin: "https://asm-inventory.netlify.app",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization"],
   optionsSuccessStatus: 200,
 }
 
