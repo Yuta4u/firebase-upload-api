@@ -10,18 +10,11 @@ const { getStorage, ref, uploadBytesResumable } = require("firebase/storage")
 const { signInWithEmailAndPassword } = require("firebase/auth")
 const { auth } = require("./config/firebase.config")
 
-const corsOptions = {
-  origin: "https://asm-inventory.netlify.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: ["Content-Type", "Authorization"],
-  optionsSuccessStatus: 200,
-}
-
-app.use(cors(corsOptions))
-
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
+app.options("*", cors())
 
 // Helper function to upload images to Firebase
 async function uploadImageToFirebase(file) {
