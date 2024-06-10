@@ -9,6 +9,9 @@ const { getStorage, ref, uploadBytesResumable } = require("firebase/storage")
 const { signInWithEmailAndPassword } = require("firebase/auth")
 const { auth } = require("./config/firebase.config")
 
+app.use(express.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 app.options("*", cors())
 
